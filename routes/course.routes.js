@@ -27,14 +27,14 @@ router.get("/", (req, res) => {
 
 // GET - "/:courseId" - Details of course by ID.
 router.get("/:courseId", (req, res, next) => {
-  const { businessId } = req.params;
+  const { courseId } = req.params;
 
-  Business.findById(businessId)
-    .then((businessFromDB) => {
-      res.status(200).json(businessFromDB);
+  Course.findById(courseId)
+    .then((course) => {
+      res.status(200).json(course);
     })
     .catch((error) => {
-      next({ error, message: "Error getting business" });
+      next({ error, message: "Error getting course" });
     });
 });
 
